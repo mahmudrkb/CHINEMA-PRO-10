@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Footer from '../components/Footer';
+import TopMovies from '../components/TopMovies';
 
 const HomeLayout = () => {
     return (
@@ -11,7 +12,9 @@ const HomeLayout = () => {
                 <Banner></Banner>
             </header>
 
-            <main></main>
+            <main>
+                <TopMovies></TopMovies>
+            </main>
             
             <footer>
                 <Footer></Footer>
