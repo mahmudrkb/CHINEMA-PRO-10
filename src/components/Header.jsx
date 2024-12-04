@@ -57,9 +57,9 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end space-x-3">
-          <Link>LOGIN</Link>
+          <Link to={"/auth/login"}>LOGIN</Link>
 
-          <Link>SIGNIN</Link>
+          <Link to={'/auth/signup'}>SIGNUP</Link>
         </div>
       </div>
     </div>
