@@ -17,6 +17,9 @@ const Header = () => {
       <li className="mr-2">
         <NavLink to={"/favorite"}>My Favorite</NavLink>
       </li>
+      <li className="mr-2">
+        <NavLink to={"/pages"}>Pages</NavLink>
+      </li>
     
     </>
   );
