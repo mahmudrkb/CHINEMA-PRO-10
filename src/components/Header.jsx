@@ -6,6 +6,7 @@ const Header = () => {
 
 const{user}=useContext(AuthContext)
 
+
   const links = (
     <>
       <li className="mr-2">
@@ -22,7 +23,7 @@ const{user}=useContext(AuthContext)
         <NavLink to={"/favorite"}>My Favorite</NavLink>
       </li>
       <li className="mr-2">
-        <NavLink to={"/pages"}>Pages</NavLink>
+        <NavLink to={"/pages"}>Pages {user &&user.email}</NavLink>
       </li>
     
     </>
@@ -57,6 +58,7 @@ const{user}=useContext(AuthContext)
           </div>
           <a className="  text-xl">CHINEMA PRO</a>
         </div>
+       {/* <div>{user.displayName}</div> */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>

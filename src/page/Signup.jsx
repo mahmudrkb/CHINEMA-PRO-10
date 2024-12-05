@@ -6,7 +6,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
-  const { loginWithGoogle, signupWithEmail, setUser } = useContext(AuthContext);
+  const { setUser, loginWithGoogle, signupWithEmail, addProfile } =
+    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [errorMgs, setErrorMgs] = useState("");
@@ -37,31 +38,37 @@ const Signup = () => {
     const email = form.email.value;
     const password = form.password.value;
 
- signupWithEmail(email, password)
+    signupWithEmail(email, password)
       .then((result) => {
         const user = result.user;
-        
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-        if (!passwordRegex.test(password)) {
-          setErrorMgs("Password Should be Alpha Numeric");
-          return;
-        }
-        
-        if (password.length < 6) {
-          setErrorMgs("Password should be 6 characters or longer.");
-          return;
-        }
+        console.log(user)
+        setUser(user)
+       
+   
 
+        // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        // if (!passwordRegex.test(password)) {
+        //   setErrorMgs("Password Should be Alpha Numeric");
+        //   return;
+        // }
 
-        
+        // if (password.length < 6) {
+        //   setErrorMgs("Password should be 6 characters or longer.");
+        //   return;
+        // }
 
-        toast.success("Registration Successful ! ", {
-          position: "top-center",
-        });
+        // addProfile({ displayName: name, photoURL: photo })
+        //   .then((result) => {
+        //     const user = result.user;
+        //     console.log(user, "this is add photo");
+        //   })
+        //   .catch(() => {});
 
-        navigate("/");
+        // toast.success("Registration Successful ! ", {
+        //   position: "top-center",
+        // });
 
-        
+        // navigate("/");
       })
 
       .catch(() => {
@@ -83,7 +90,7 @@ const Signup = () => {
             Have an Account ?
             <span className=" text-indigo-600 hover:text-slate-600">
               {" "}
-              <Link to={"/auth/login"}>Log In</Link>{" "}
+              <Link to={"/auth/login"}> Log In</Link>{" "}
             </span>
           </h3>
         </div>

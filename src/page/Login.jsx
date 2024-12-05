@@ -5,9 +5,11 @@ import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-    const { loginWithGoogle } = useContext(AuthContext);
+    const { loginWithGoogle, loginProfile,} = useContext(AuthContext);
+
     const location = useLocation();
     const navigate = useNavigate();
+
     const handleGoogleLogin = () => {
       loginWithGoogle()
         .then((result) => {
@@ -24,19 +26,43 @@ const Login = () => {
           });
         });
     };
+
+    const handleLogin=(e)=>{
+      e.preventDefault()
+      const email=e.target.email.value
+      const password=e.target.password.value
+
+      loginProfile(email,password)
+      .then(result=>{
+        const user=result.user
+        toast.success("Login Successful", {
+          position: "top-center",
+        });
+        navigate(location?.state ? location.state : "/");
+        
+      })
+      .catch((error)=>{
+        toast.error("Login Unsuccessful ! ", {
+          position: "top-center",
+        });
+
+      })
+
+    }
   return (
    <div>
      <div className="container mx-auto  p-5  flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="  sm:mx-auto sm:w-full sm:max-w-sm">
         
         <h2 className="mt-10 text-center text-3xl font-bold ">
+     
          <span className="text-indigo-600"> Log In</span> to your account
         </h2>
         <h3 className="text-center  mt-3"> Don't have an Account ?<span className=" text-indigo-600 hover:text-slate-600" > <Link to={"/auth/signup"} >Sign Up</Link> </span></h3>
       </div>
 
       <div className="mt-5 sm:mx-auto border-2 rounded-lg bg-indigo-100 shadow-lg  p-10   sm:w-full sm:max-w-lg">
-        <form action="#" method="POST" className="space-y-6">
+        <form onSubmit={handleLogin} method="POST" className="space-y-6">
           <div>
             <label
               htmlFor="email"
