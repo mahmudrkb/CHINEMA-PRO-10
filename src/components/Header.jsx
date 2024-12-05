@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 const Header = () => {
-
-const{user}=useContext(AuthContext)
-
+  const { user, userLogOut } = useContext(AuthContext);
 
   const links = (
     <>
@@ -23,9 +22,8 @@ const{user}=useContext(AuthContext)
         <NavLink to={"/favorite"}>My Favorite</NavLink>
       </li>
       <li className="mr-2">
-        <NavLink to={"/pages"}>Pages {user &&user.email}</NavLink>
+        <NavLink to={"/pages"}>Pages </NavLink>
       </li>
-    
     </>
   );
   return (
@@ -58,17 +56,31 @@ const{user}=useContext(AuthContext)
           </div>
           <a className="  text-xl">CHINEMA PRO</a>
         </div>
-       {/* <div>{user.displayName}</div> */}
+        {/* <div>{user.displayName}</div> */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        
 
-        <div className="navbar-end space-x-3">
-          <Link to={"/auth/login"}>LOGIN</Link>
-
-          <Link to={'/auth/signup'}>SIGNUP</Link>
-        </div>
+        {user && user.email ? (
+          <div className="navbar-end  space-x-3 flex gap-5">
+            <img className="rounded-full w-10 h-10" src={user?.photoURL} alt="" />
+            <button
+              onClick={userLogOut}
+              className="text-sm hover:text-gray-300"
+            >
+              LOGOUT
+            </button>
+          </div>
+        ) : (
+          <div className="navbar-end  space-x-3 flex gap-5">
+            <Link to={"/auth/signup"}>
+              <FaRegCircleUser className="hover:text-gray-400 w-10 h-10" />
+            </Link>
+            <Link className=" hover:text-gray-400 pl-2" to={"/auth/login"}>
+              LOGIN
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

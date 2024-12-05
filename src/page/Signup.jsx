@@ -33,7 +33,6 @@ const Signup = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
@@ -41,34 +40,33 @@ const Signup = () => {
     signupWithEmail(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user)
-        setUser(user)
-       
-   
+        console.log(user);
 
-        // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-        // if (!passwordRegex.test(password)) {
-        //   setErrorMgs("Password Should be Alpha Numeric");
-        //   return;
-        // }
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+          setErrorMgs("Password Should be Alpha Numeric");
+          return;
+        }
 
-        // if (password.length < 6) {
-        //   setErrorMgs("Password should be 6 characters or longer.");
-        //   return;
-        // }
+        if (password.length < 6) {
+          setErrorMgs("Password should be 6 characters or longer.");
+          return;
+        }
+        setUser(user);
 
-        // addProfile({ displayName: name, photoURL: photo })
-        //   .then((result) => {
-        //     const user = result.user;
-        //     console.log(user, "this is add photo");
-        //   })
-        //   .catch(() => {});
+        addProfile({ displayName: name, photoURL: photo })
+          .then((result) => {
+            const user = result.user;
+            console.log(user, "this is add photo");
+          })
+          .catch(() => {});
 
-        // toast.success("Registration Successful ! ", {
-        //   position: "top-center",
-        // });
+        toast.success("Registration Successful ! ", {
+          position: "top-center",
+        });
+        setUser(user);
 
-        // navigate("/");
+        navigate("/");
       })
 
       .catch(() => {
