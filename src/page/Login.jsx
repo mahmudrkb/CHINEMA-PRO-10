@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
     const { loginWithGoogle } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleGoogleLogin = () => {
       loginWithGoogle()
         .then((result) => {
@@ -14,7 +16,7 @@ const Login = () => {
           toast.success("Log In successful with Google ", {
             position: "top-center",
           });
-          // navigate(location?.state ? location.state : "/");
+          navigate(location?.state ? location.state : "/");
         })
         .catch((error) => {
           toast.error("Log In  Unsuccessful with Google ", {

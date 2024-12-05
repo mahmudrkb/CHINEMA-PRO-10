@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
-  const { loginWithGoogle } = useContext(AuthContext);
+  const { loginWithGoogle, signupWithEmail, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [errorMgs, setErrorMgs] = useState("");
+
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((result) => {
@@ -15,7 +19,7 @@ const Signup = () => {
         toast.success("Log In successful with Google ", {
           position: "top-center",
         });
-        // navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         toast.error("Log In  Unsuccessful with Google ", {
@@ -23,12 +27,56 @@ const Signup = () => {
         });
       });
   };
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+ signupWithEmail(email, password)
+      .then((result) => {
+        const user = result.user;
+        
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+          setErrorMgs("Password Should be Alpha Numeric");
+          return;
+        }
+        
+        if (password.length < 6) {
+          setErrorMgs("Password should be 6 characters or longer.");
+          return;
+        }
+
+
+        
+
+        toast.success("Registration Successful ! ", {
+          position: "top-center",
+        });
+
+        navigate("/");
+
+        
+      })
+
+      .catch(() => {
+        toast.error("Registration Unsuccessful ! ", {
+          position: "top-center",
+        });
+      });
+  };
+
   return (
     <div>
       <div className="container mx-auto  p-5  flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="  sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-3xl font-bold ">
-            <span className="text-indigo-600"> Sign In</span> to your account
+            <span className="text-indigo-600"> Sign Up</span> to your account
           </h2>
           <h3 className="text-center  mt-3">
             {" "}
@@ -41,7 +89,7 @@ const Signup = () => {
         </div>
 
         <div className="mt-5 sm:mx-auto border-2 rounded-lg bg-indigo-100 shadow-lg  p-10   sm:w-full sm:max-w-lg">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSignup} method="POST" className="space-y-6">
             <div>
               <label
                 htmlFor="text"
@@ -73,7 +121,7 @@ const Signup = () => {
                   name="photo"
                   type="text"
                   required
-                  autoComplete="text"
+                  autoComplete="url"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
@@ -113,9 +161,13 @@ const Signup = () => {
                   type="password"
                   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white px-3 pt-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
+            </div>
+
+            <div className="form-control text-sm ml-2 text-red-500 ">
+              {errorMgs}
             </div>
 
             <div>
@@ -123,12 +175,12 @@ const Signup = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                Sign Up
               </button>
             </div>
           </form>
 
-          <p className="mt-5 text-center text-sm/6 text-gray-500">
+          <div className="mt-5 text-center text-sm/6 text-gray-500">
             ---------- OR ----------
             <div className="text-center mt-3">
               {" "}
@@ -141,7 +193,7 @@ const Signup = () => {
                 Login With Google
               </button>
             </div>
-          </p>
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Header = () => {
+
+const{user}=useContext(AuthContext)
+
   const links = (
     <>
       <li className="mr-2">
@@ -56,6 +60,8 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+        
+
         <div className="navbar-end space-x-3">
           <Link to={"/auth/login"}>LOGIN</Link>
 
