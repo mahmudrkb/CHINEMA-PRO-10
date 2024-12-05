@@ -62,16 +62,16 @@ const Header = () => {
         </div>
 
         {user && user.email ? (
-          <div className="navbar-end   space-x-3 relative flex gap-5">
+          <div className="navbar-end  relative   space-x-3 flex gap-5">
             {" "}
-          <div className="group  ">
+          <div className="group mr-8 sm:mr-36 md:mr-6 xl:mr-20  ">
           <img
             
               className="rounded-full w-10 h-10 "
               src={user?.photoURL}
-              alt="Medium avatar"
+              alt=""
             />
-             <div className="absolute top-12 left-6 md:left-1/2  transform -translate-x-1/2 bg-gray-200 text-black text-sm rounded-md px-2  opacity-0 w-fit group-hover:opacity-100 transition-opacity">
+             <div className="absolute top-10 left-6 md:left-1/2  transform -translate-x-1/2 bg-gray-200 text-black text-sm rounded-md px-2  opacity-0 w-fit group-hover:opacity-100 transition-opacity">
                   {user.displayName}
                 </div>
 
