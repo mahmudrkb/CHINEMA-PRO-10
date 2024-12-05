@@ -7,6 +7,7 @@ import Login from "../page/Login";
 
 import Signup from "../page/Signup";
 import Contact from "../page/Contact";
+import AddMovies from "../page/AddMovies";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/addMovies",
+        element: <AddMovies></AddMovies>
       },
       {
         path:'/pages',
