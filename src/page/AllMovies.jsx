@@ -1,8 +1,8 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Banner from "../components/Banner";
+
 
 
 const AllMovies = () => {
@@ -10,6 +10,8 @@ const AllMovies = () => {
     AOS.init({ duration: 3000 });
 
   const movies = useLoaderData();
+
+
   return (
     
    <div>
@@ -39,7 +41,7 @@ const AllMovies = () => {
                <p> <span  className="font-bold">Release Year : </span>{movie.year}</p>
                <p> <span  className="font-bold"> Rating : </span>{movie.rating}</p>
                <div className="card-actions justify-start">
-                 <button className="btn hover:text-white hover:bg-black ">Details</button>
+                 <Link to={`movieDetails/${movie._id}`} className="btn hover:text-white hover:bg-black ">Details</Link>
                </div>
              </div>
             </div>

@@ -8,20 +8,20 @@ const Header = () => {
 
   const links = (
     <>
-      <li className="mr-2">
+      <li className="mr-2 font-bold ">
         <NavLink to={"/"}> Home</NavLink>
       </li>
 
-      <li className="mr-2">
+      <li className="mr-2  font-bold">
         <NavLink to={"/allMovies"}>All Movies</NavLink>
       </li>
-      <li className="mr-2">
+      <li className="mr-2 font-bold">
         <NavLink to={"/addMovies"}>Add Movies</NavLink>
       </li>
-      <li className="mr-2">
+      <li className="mr-2 font-bold">
         <NavLink to={"/favorite"}>My Favorite</NavLink>
       </li>
-      <li className="mr-2">
+      <li className="mr-2 font-bold">
         <NavLink to={"/pages"}>Pages </NavLink>
       </li>
     </>
@@ -54,7 +54,7 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a className="  text-xl">CHINEMA PRO</a>
+          <a className=" font-bold  text-xl">CHINEMA PRO</a>
         </div>
         {/* <div>{user.displayName}</div> */}
         <div className="navbar-center hidden lg:flex">
@@ -78,7 +78,7 @@ const Header = () => {
           </div>
             <button
               onClick={userLogOut}
-              className="text-sm hover:text-gray-300"
+              className="text-sm font-bold hover:text-gray-300"
             >
               LOGOUT
             </button>
@@ -88,7 +88,7 @@ const Header = () => {
             <Link to={"/auth/signup"}>
               <FaRegCircleUser className="hover:text-gray-400 w-10 h-10" />
             </Link>
-            <Link className=" hover:text-gray-400 pl-2" to={"/auth/login"}>
+            <Link className=" font-bold hover:text-gray-400 pl-2" to={"/auth/login"}>
               LOGIN
             </Link>
           </div>

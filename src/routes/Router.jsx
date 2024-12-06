@@ -9,6 +9,7 @@ import Signup from "../page/Signup";
 import Contact from "../page/Contact";
 import AddMovies from "../page/AddMovies";
 import AllMovies from "../page/AllMovies";
+import MovieDetails from "../page/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         path: "/allMovies",
         element: <AllMovies></AllMovies>,
         loader: () => fetch("http://localhost:5000/allmovies"),
+      },
+      {
+        path: "/allMovies/movieDetails/:id",
+        element: <MovieDetails></MovieDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/allmovies/${params.id}`),
       },
       {
         path: "/addMovies",
