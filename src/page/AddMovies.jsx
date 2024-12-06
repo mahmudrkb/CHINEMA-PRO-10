@@ -12,9 +12,8 @@ const AddMovies = () => {
 
   const onPointerEnter = () => console.log("Enter");
   const onPointerLeave = () => console.log("Leave");
-  const onPointerMove= (value, index) =>
-    console.log(value, index);
-
+  const onPointerMove = (value, index) =>
+    console.log(`Pointer moved. Value: ${value}, Index: ${index}`);
 
   return (
     <div>
@@ -130,7 +129,7 @@ const AddMovies = () => {
                   </select>
                 </div>
               </div>
-              <div>
+              <div className="">
                 <label
                   htmlFor="text"
                   className="block text-sm/6 font-medium text-gray-900"
@@ -138,53 +137,56 @@ const AddMovies = () => {
                   Rating
                 </label>
                 <div className="mt-2">
-                <div className="app">
-                <Rating
-                    onClick={handleRating}
-                    onPointerEnter={onPointerEnter}
-                    onPointerLeave={onPointerLeave}
-                    onPointerMove={onPointerMove}
-                    size={10}
-                    fillColor="gold"
-                    emptyColor="lightgray"
-                    transition
-                  />
-                </div>
+                  <div className=" ">
+                    <Rating
+                      onClick={handleRating}
+                      onPointerEnter={onPointerEnter}
+                      onPointerLeave={onPointerLeave}
+                      onPointerMove={onPointerMove}
+                      size={30}
+                      fillColor="gold"
+                      emptyColor="lightgray"
+                      transition
+                      required
+                      name="rating"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* 4 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div>
-                <div className="mt-2">
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    autoComplete="name"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  />
-                </div>
+
+            <div>
+              <label
+                htmlFor="text"
+                className="block text-sm/6 font-medium text-gray-900"
+              >
+                Summary
+              </label>
+              <div className="mt-2">
+                <textarea
+                  className="textarea textarea-bordered block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  placeholder="Text here"
+                ></textarea>
               </div>
-              <div>
-                <label
-                  htmlFor="text"
-                  className="block text-sm/6 font-medium text-gray-900"
-                >
-                  Name
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    autoComplete="name"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  />
-                </div>
+            </div>
+            <div>
+              <label
+                htmlFor="text"
+                className="block text-sm/6 font-medium text-gray-900"
+              >
+                Email
+              </label>
+              <div className="mt-2">
+                <input
+                  id="name"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                />
               </div>
             </div>
 
