@@ -54,7 +54,7 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <a className=" font-bold  text-xl">CHINEMA PRO</a>
+          <a className=" font-bold  text-xl">CHINEMA  PRO</a>
         </div>
         {/* <div>{user.displayName}</div> */}
         <div className="navbar-center hidden lg:flex">
@@ -86,7 +86,7 @@ const Header = () => {
         ) : (
           <div className="navbar-end  space-x-3 flex gap-5">
             <Link to={"/auth/signup"}>
-              <FaRegCircleUser className="hover:text-gray-400 w-10 h-10" />
+              <FaRegCircleUser className="hover:text-gray-400 w-6 h-6" />
             </Link>
             <Link className=" font-bold hover:text-gray-400 pl-2" to={"/auth/login"}>
               LOGIN

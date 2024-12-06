@@ -1,8 +1,16 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  <div>  <h1 className="font-bold">CHINEMA PRO </h1>
+    <h4><span className="font-semibold">Live Link : </span> https://assignment-10-6eb15.web.app/</h4>
+    </div>
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   <div>
+    <h4 className="font-semibold"> Feature</h4>
+    <ul>
+      <li>User Authentication</li>
+      <li> Movie Ratings and Reviews</li>
+      <li>Favorites and Watchlist</li>
+      <li> Responsive Design and User Experience</li>
+      <li>Add Movie</li>
+    </ul>
+</div>

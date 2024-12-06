@@ -10,6 +10,7 @@ import Contact from "../page/Contact";
 import AddMovies from "../page/AddMovies";
 import AllMovies from "../page/AllMovies";
 import MovieDetails from "../page/MovieDetails";
+import Favorite from "../page/Favorite";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,13 @@ const router = createBrowserRouter([
         path: "/addMovies",
         element: <AddMovies></AddMovies>,
       },
-
+      {
+        path: "/favorite",
+        element:<Favorite></Favorite>,
+        loader: () => fetch("http://localhost:5000/allmovies"),
+       
+       
+      },
       {
         path: "/pages",
         element: <Contact></Contact>,
