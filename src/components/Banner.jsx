@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className=" mb-5 mx-auto   pb-5">
+    <div className="  mb-5 mx-auto   pb-5">
       <div className="carousel w-full ">
         <div id="item1" className="carousel-item relative w-full">
           <img

@@ -16,7 +16,7 @@ const Signup = () => {
     loginWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         toast.success("Log In successful with Google ", {
           position: "top-center",
         });
@@ -40,7 +40,7 @@ const Signup = () => {
     signupWithEmail(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         if (!passwordRegex.test(password)) {
@@ -57,7 +57,7 @@ const Signup = () => {
         addProfile({ displayName: name, photoURL: photo })
           .then((result) => {
             const user = result.user;
-            console.log(user, "this is add photo");
+            // console.log(user, "this is add photo");
           })
           .catch(() => {});
 

@@ -8,7 +8,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateCurrentUser,
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.init";
@@ -20,7 +19,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
-  console.log(user)
+  // console.log(user)
   const [loading, setLoading] = useState(true);
 
   const loginWithGoogle = () => {

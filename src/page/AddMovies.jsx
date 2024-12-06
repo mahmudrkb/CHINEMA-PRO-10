@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import Swal from "sweetalert2";
+
 
 const AddMovies = () => {
+
+const navigate=useNavigate();
+console.log(location)
+
+
   const [rating, setRating] = useState(0);
 
   const handleRating = (rate) => {
@@ -15,6 +22,58 @@ const AddMovies = () => {
   const onPointerMove = (value, index) =>
     console.log(`Pointer moved. Value: ${value}, Index: ${index}`);
 
+  const handleAddMovies = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const poster=form.poster.value
+    const title=form.title.value
+    const genre=form.genre.value
+    const duration=form.duration.value
+    const year=form.year.value
+    // const rating=form.rating.value
+    const summary=form.summary.value
+    const email=form.email.value
+
+    const newMovie={poster,title,genre,duration,year,rating ,summary,email}
+
+    console.log(newMovie)
+
+    // server side connect 
+
+    fetch("http://localhost:5000/addMovies",{
+      method:"POST",
+      headers:{
+        "content-type":"application/json"
+      },
+      body: JSON.stringify(newMovie)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      if(data.insertedId
+      ){
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Movie has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+      navigate(data.insertedId? "/allMovies":"/")
+      
+    })
+    .catch((error)=>{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        
+      });
+    })
+   
+  };
+
   return (
     <div>
       <div className="container mx-auto  p-5  flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -25,7 +84,7 @@ const AddMovies = () => {
         </div>
 
         <div className="mt-5 sm:mx-auto border-2 rounded-lg bg-indigo-100 shadow-lg  p-10   sm:w-full sm:max-w-2xl">
-          <form method="POST" className="space-y-6">
+          <form onSubmit={handleAddMovies} method="POST" className="space-y-6">
             {/* 1 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10  ">
               <div>
@@ -66,7 +125,7 @@ const AddMovies = () => {
               </div>
             </div>
 
-            {/* 2 */}
+            {/* 3 */}
             <div className="grid grid-cols-2 gap-10">
               <div>
                 <label
@@ -77,6 +136,7 @@ const AddMovies = () => {
                 </label>
                 <div className="mt-2">
                   <select
+                    name="genre"
                     className=" h-9 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                     required
                   >
@@ -107,7 +167,7 @@ const AddMovies = () => {
               </div>
             </div>
 
-            {/* 3 */}
+            {/* 5 */}
             <div className="grid grid-cols-2 gap-10">
               <div>
                 <label
@@ -118,6 +178,7 @@ const AddMovies = () => {
                 </label>
                 <div className="mt-2">
                   <select
+                    name="year"
                     className="h-9 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                     required
                   >
@@ -155,7 +216,7 @@ const AddMovies = () => {
               </div>
             </div>
 
-            {/* 4 */}
+            {/* 6 */}
 
             <div>
               <label
@@ -166,8 +227,10 @@ const AddMovies = () => {
               </label>
               <div className="mt-2">
                 <textarea
+                  name="summary"
                   className="textarea textarea-bordered block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   placeholder="Text here"
+                  required
                 ></textarea>
               </div>
             </div>

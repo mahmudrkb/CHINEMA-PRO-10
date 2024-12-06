@@ -14,7 +14,7 @@ const Login = () => {
       loginWithGoogle()
         .then((result) => {
           const user = result.user;
-          console.log(user);
+          // console.log(user);
           toast.success("Log In successful with Google ", {
             position: "top-center",
           });
