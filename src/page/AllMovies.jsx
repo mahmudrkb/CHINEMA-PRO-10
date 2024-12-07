@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -7,9 +7,10 @@ import "aos/dist/aos.css";
 
 const AllMovies = () => {
 
-    AOS.init({ duration: 3000 });
+    AOS.init({ duration: 2000 });
 
-  const movies = useLoaderData();
+  const loadMovies = useLoaderData();
+  const [movies,useMovies]=useState(loadMovies)
 
 
   return (

@@ -38,6 +38,7 @@ const Login = () => {
         toast.success("Login Successful", {
           position: "top-center",
         });
+        e.target.reset()
         navigate(location?.state ? location.state : "/");
         
       })

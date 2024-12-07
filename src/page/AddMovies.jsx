@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 
@@ -22,6 +23,8 @@ console.log(location)
   const onPointerMove = (value, index) =>
     console.log(`Pointer moved. Value: ${value}, Index: ${index}`);
 
+
+
   const handleAddMovies = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -37,6 +40,57 @@ console.log(location)
     const newMovie={poster,title,genre,duration,year,rating ,summary,email}
 
     console.log(newMovie)
+
+    if (!poster || !poster.match(/^https?:\/\/.+/)) {
+      toast.error("Poster must be a valid URL.", {
+          position: "top-center",
+        }
+);
+      return false;
+    }
+    if (!title || title.length < 2) {
+      toast.error("Title must have at least 2 characters.", {
+        position: "top-center",
+      });
+
+      return false;
+    }
+    if (!genre) {
+      toast.error("Please select a genre.", {
+        position: "top-center",
+      });
+
+      return false;
+    }
+    if (!duration || duration <= 60) {
+      toast.error("Duration must be greater than 60 minutes.", {
+        position: "top-center",
+      });
+
+      return false;
+    }
+    if (!year) {
+      toast.error("Please select a release year.", {
+        position: "top-center",
+      });
+
+      return false;
+    }
+    if (!rating) {
+      toast.error("Please select a rating.", {
+        position: "top-center",
+      });
+
+      return false;
+    }
+    if (!summary || summary.length < 10) {
+      toast.error("Summary must have at least 10 characters.", {
+        position: "top-center",
+      });
+
+      return false;
+    }
+
 
     // server side connect 
 

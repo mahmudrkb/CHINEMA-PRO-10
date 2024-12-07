@@ -17,7 +17,6 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-
   const [user, setUser] = useState(null);
   // console.log(user)
   const [loading, setLoading] = useState(true);
@@ -34,7 +33,7 @@ const AuthProvider = ({ children }) => {
 
   const addProfile = (updateData) => {
     setLoading(true);
-    return updateProfile(auth.currentUser,updateData);
+    return updateProfile(auth.currentUser, updateData);
   };
 
   const loginProfile = (email, password) => {
@@ -42,33 +41,33 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const userLogOut=()=>{
-    return signOut(auth)
-  }
-
- 
+  const userLogOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   const info = {
     user,
     setUser,
+    loading,
+  
 
     loginWithGoogle,
     signupWithEmail,
     addProfile,
     loginProfile,
-    userLogOut
+    userLogOut,
   };
 
-  useEffect(()=>{
-    const unSub = onAuthStateChanged(auth,(currentUser=>{
-        setUser(currentUser)
-        
-    }))
-    return ()=>{
-        unSub()
-    }
-
-  },[])
+  useEffect(() => {
+    const unSub = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => {
+      unSub();
+    };
+  }, []);
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
 };
