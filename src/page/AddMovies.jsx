@@ -5,12 +5,9 @@ import { Rating } from "react-simple-star-rating";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
-
 const AddMovies = () => {
-
-const navigate=useNavigate();
-console.log(location)
-
+  const navigate = useNavigate();
+  console.log(location);
 
   const [rating, setRating] = useState(0);
 
@@ -23,29 +20,35 @@ console.log(location)
   const onPointerMove = (value, index) =>
     console.log(`Pointer moved. Value: ${value}, Index: ${index}`);
 
-
-
   const handleAddMovies = (e) => {
     e.preventDefault();
     const form = e.target;
-    const poster=form.poster.value
-    const title=form.title.value
-    const genre=form.genre.value
-    const duration=form.duration.value
-    const year=form.year.value
+    const poster = form.poster.value;
+    const title = form.title.value;
+    const genre = form.genre.value;
+    const duration = form.duration.value;
+    const year = form.year.value;
     // const rating=form.rating.value
-    const summary=form.summary.value
-    const email=form.email.value
+    const summary = form.summary.value;
+    const email = form.email.value;
 
-    const newMovie={poster,title,genre,duration,year,rating ,summary,email}
+    const newMovie = {
+      poster,
+      title,
+      genre,
+      duration,
+      year,
+      rating,
+      summary,
+      email,
+    };
 
-    console.log(newMovie)
+    console.log(newMovie);
 
     if (!poster || !poster.match(/^https?:\/\/.+/)) {
       toast.error("Poster must be a valid URL.", {
-          position: "top-center",
-        }
-);
+        position: "top-center",
+      });
       return false;
     }
     if (!title || title.length < 2) {
@@ -91,41 +94,36 @@ console.log(location)
       return false;
     }
 
+    // server side connect
 
-    // server side connect 
-
-    fetch("http://localhost:5000/addMovies",{
-      method:"POST",
-      headers:{
-        "content-type":"application/json"
+    fetch("https://assignment-10-server-snowy-seven.vercel.app/addMovies", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body: JSON.stringify(newMovie)
+      body: JSON.stringify(newMovie),
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-      if(data.insertedId
-      ){
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Movie has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        navigate(data.insertedId ? "/allMovies" : "/");
+      })
+      .catch((error) => {
         Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Movie has been saved",
-          showConfirmButton: false,
-          timer: 1500
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
         });
-      }
-      navigate(data.insertedId? "/allMovies":"/")
-      
-    })
-    .catch((error)=>{
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-        
       });
-    })
-   
   };
 
   return (

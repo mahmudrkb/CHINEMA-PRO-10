@@ -13,6 +13,7 @@ import MovieDetails from "../page/MovieDetails";
 import Favorite from "../page/Favorite";
 import PrivateRoute from "./PrivateRoute";
 import Featured from "../components/Featured";
+import UpdateMovie from "../page/UpdateMovie";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element:<Featured></Featured> ,
-        loader: () => fetch("http://localhost:5000/allmovies"),
-       
+        element: <Featured></Featured>,
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-snowy-seven.vercel.app/allmovies"
+          ),
       },
 
       {
@@ -43,19 +46,42 @@ const router = createBrowserRouter([
       {
         path: "/allMovies",
         element: <AllMovies></AllMovies>,
-        loader: () => fetch("http://localhost:5000/allmovies"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-snowy-seven.vercel.app/allmovies"
+          ),
       },
-    
+
       {
         path: "/allMovies/movieDetails/:id",
-        element: <MovieDetails></MovieDetails>,
+        element: (
+          <PrivateRoute>
+            <MovieDetails></MovieDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allmovies/${params.id}`),
+          fetch(
+            `https://assignment-10-server-snowy-seven.vercel.app/allmovies/${params.id}`
+          ),
       },
       {
+        path: "/update/:id",
+        element: <UpdateMovie></UpdateMovie>,
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-10-server-snowy-seven.vercel.app/allmovies/${params.id}`
+          ),
+      },
+
+      {
         path: "/favorite",
-        element: <Favorite></Favorite>,
-        loader: () => fetch("http://localhost:5000/allmovies"),
+        element: (
+          <PrivateRoute>
+            <Favorite></Favorite>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch("https://assignment-10-server-snowy-seven.vercel.app/favorite"),
       },
       {
         path: "/pages",
