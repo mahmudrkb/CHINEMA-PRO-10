@@ -27,7 +27,7 @@ const Featured = () => {
           <div
             data-aos="fade-up"
             key={index}
-            className="card grid grid-cols-2 gap-8 card-side bg-base-100 shadow-xl"
+            className="card grid grid-cols-2 gap-8 card-side  shadow-xl"
           >
             <figure>
               <img className="max-h-96 w-fit " src={movie.poster} alt="Movie" />

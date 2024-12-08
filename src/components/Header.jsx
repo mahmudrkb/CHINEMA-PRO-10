@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { IoMoon, IoSunny } from "react-icons/io5";
 
 const Header = () => {
   const { user, userLogOut } = useContext(AuthContext);
@@ -26,10 +27,35 @@ const Header = () => {
       </li>
     </>
   );
+
+  const [dark, setDark] = React.useState(false);
+
+  const darkModeHandler = () => {
+      setDark(!dark);
+      document.body.classList.toggle("dark");
+  }
   return (
-    <div>
-      <div className="navbar bg-base-100 container mx-auto p-5 my-3">
+
+   <div className=" dark:bg-[#434342] dark:text-white ">
+     <div className="container  mx-auto p-5 ">
+      <div className="bg-yellow  flex justify-end">
+            <button className="text-3xl mr-5" onClick={()=> darkModeHandler()}>
+                {
+                    
+                    dark && <IoSunny />
+                }
+                {
+                    !dark && <IoMoon />
+                }
+            </button>
+        </div>
+     
+      
+      <div className="navbar  ">
+      
+        
         <div className="navbar-start">
+       
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -95,6 +121,7 @@ const Header = () => {
         )}
       </div>
     </div>
+   </div>
   );
 };
 

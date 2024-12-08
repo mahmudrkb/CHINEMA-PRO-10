@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const AuthLayout = () => {
     return (
-        <div>
+        <div className=' dark:bg-[#434342] dark:text-white'>
             <section>
                 <Header></Header>
             </section>

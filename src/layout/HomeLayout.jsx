@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom';
 
 const HomeLayout = () => {
     return (
-        <div>
+        <div className=' dark:bg-[#434342] dark:text-white'>
             <header>
                 <Header></Header>
               

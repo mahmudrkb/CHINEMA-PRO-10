@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 const ActionMovie = () => {
   return (
-    <div className="bg-white">
+    <div className=" dark:bg-[#434342] dark:text-white">
       <div className="container mx-auto p-5 my-5">
         <h1 className="  text-center text-3xl md:text-4xl my-10">TOP ACTION MOVIES IN THEATRES</h1>
         {/* img */}
