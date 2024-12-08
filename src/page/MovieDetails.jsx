@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { GrFavorite } from "react-icons/gr";
+import { PiButterflyDuotone } from "react-icons/pi";
 import { RxUpdate } from "react-icons/rx";
 import {
   Link,
@@ -93,6 +94,11 @@ const MovieDetails = () => {
       });
   };
 
+ const handleUpdate=()=>{
+  console.log("Button Update")
+  navigate("/update")
+ }
+
   return (
     <div className="container mx-auto p-5 my-5 ">
       <div className="grid gap-7 md:grid-cols-2">
@@ -143,7 +149,8 @@ const MovieDetails = () => {
               </Link>
             </div>
             <div className="card-actions justify-start">
-              <button
+              <button 
+              onClick={handleUpdate}
                
                 className="btn hover:text-white hover:bg-black "
               >

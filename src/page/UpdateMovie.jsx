@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLoaderData} from "react-router-dom";
-
 import { useForm } from "react-hook-form";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
@@ -61,10 +60,7 @@ const UpdateMovie = () => {
   return (
     <div className="dark:bg-slate-800 bg-white dark:text-white">
       <div
-        style={{
-          backgroundImage:
-            "url(https://i.ibb.co/kyg7ssL/cool-background-2.png)",
-        }}
+      
         className="hero py-10  min-h-screen"
       >
         <div className="card  w-full max-w-3xl shrink-0 bg-white shadow-2xl">

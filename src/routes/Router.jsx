@@ -65,12 +65,9 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/update/:id",
+        path: "/update",
         element: <UpdateMovie></UpdateMovie>,
-        loader: ({ params }) =>
-          fetch(
-            `https://assignment-10-server-snowy-seven.vercel.app/allmovies/${params.id}`
-          ),
+       
       },
 
       {
