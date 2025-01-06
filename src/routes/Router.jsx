@@ -28,10 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Featured></Featured>,
-        loader: () =>
-          fetch(
-            "https://assignment-10-server-snowy-seven.vercel.app/allmovies"
-          ),
+        loader: () => fetch("http://localhost:5000/allmovies"),
       },
 
       {
@@ -46,10 +43,7 @@ const router = createBrowserRouter([
       {
         path: "/allMovies",
         element: <AllMovies></AllMovies>,
-        loader: () =>
-          fetch(
-            "https://assignment-10-server-snowy-seven.vercel.app/allmovies"
-          ),
+        loader: () => fetch("http://localhost:5000/allmovies"),
       },
 
       {
@@ -60,14 +54,11 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-10-server-snowy-seven.vercel.app/allmovies/${params.id}`
-          ),
+          fetch(`http://localhost:5000/allmovies/${params.id}`),
       },
       {
         path: "/update",
         element: <UpdateMovie></UpdateMovie>,
-       
       },
 
       {
@@ -77,8 +68,8 @@ const router = createBrowserRouter([
             <Favorite></Favorite>
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch("https://assignment-10-server-snowy-seven.vercel.app/favorite"),
+        loader: () => fetch("http://localhost:5000/favorites"),
+       
       },
       {
         path: "/pages",

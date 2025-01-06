@@ -96,7 +96,7 @@ const AddMovies = () => {
 
     // server side connect
 
-    fetch("https://assignment-10-server-snowy-seven.vercel.app/addMovies", {
+    fetch("http://localhost:5000/addMovies", {
       method: "POST",
       headers: {
         "content-type": "application/json",

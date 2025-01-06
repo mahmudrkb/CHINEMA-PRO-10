@@ -10,7 +10,7 @@ const Featured = () => {
   const [movies, useMovies] = useState([]);
 
   useEffect(() => {
-    fetch("https://assignment-10-server-snowy-seven.vercel.app/allmovies")
+    fetch("http://localhost:5000/allmovies")
       .then((res) => res.json())
       .then((data) => useMovies(data));
   }, []);
@@ -20,7 +20,7 @@ const Featured = () => {
       <h2 className=" text-center text-3xl md:text-4xl mb-16 md:mb-24">
         Movies Feature
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {movies
           .sort((a, b) => b.rating - a.rating)
           .slice(0, 6)

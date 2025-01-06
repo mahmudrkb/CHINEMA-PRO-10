@@ -22,8 +22,6 @@ const MovieDetails = () => {
     movies;
 
   const handleDelete = () => {
-    console.log("this is delete");
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -34,12 +32,9 @@ const MovieDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://assignment-10-server-snowy-seven.vercel.app/allmovies/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`http://localhost:5000/allmovies/${_id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             Swal.fire({
@@ -55,12 +50,7 @@ const MovieDetails = () => {
   };
 
   const handleAddFavorite = () => {
-    const movies = {
-      ...movie,
-      email: user.email,
-    };
-
-    fetch("https://https://assignment-10-server-snowy-seven.vercel.app/favorites", {
+    fetch(`http://localhost:5000/favorites`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +59,7 @@ const MovieDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.insertedId) {
           Swal.fire({
             icon: "success",
@@ -94,13 +84,13 @@ const MovieDetails = () => {
       });
   };
 
- const handleUpdate=()=>{
-  console.log("Button Update")
-  navigate("/update")
- }
+  const handleUpdate = () => {
+    console.log("Button Update");
+    navigate("/update");
+  };
 
   return (
-    <div className="container mx-auto p-5 my-5 ">
+    <div className="container mt-16 mx-auto p-5 my-5 ">
       <div className="grid gap-7 md:grid-cols-2">
         <div>
           <img className="rounded-2xl h-fit w-full" src={poster} alt="" />{" "}
@@ -137,7 +127,7 @@ const MovieDetails = () => {
 
           <div className="flex justify-between gap-10 pt-10">
             <div className="card-actions justify-start">
-              <Link
+              <button
                 onClick={handleAddFavorite}
                 className="btn hover:text-white hover:bg-black "
               >
@@ -146,12 +136,11 @@ const MovieDetails = () => {
                   <GrFavorite />
                 </span>{" "}
                 Favorite
-              </Link>
+              </button>
             </div>
             <div className="card-actions justify-start">
-              <button 
-              onClick={handleUpdate}
-               
+              <button
+                onClick={handleUpdate}
                 className="btn hover:text-white hover:bg-black "
               >
                 {" "}
@@ -162,7 +151,7 @@ const MovieDetails = () => {
               </button>
             </div>
             <div className="card-actions justify-start">
-              <Link
+              <button
                 onClick={handleDelete}
                 className="btn text-red-600 hover:text-white hover:bg-black  "
               >
@@ -170,7 +159,7 @@ const MovieDetails = () => {
                   <AiOutlineDelete />
                 </span>{" "}
                 Delete
-              </Link>
+              </button>
             </div>
           </div>
         </div>

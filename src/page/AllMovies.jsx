@@ -9,21 +9,19 @@ const AllMovies = () => {
   const loadMovies = useLoaderData();
   const [movies, setMovies] = useState(loadMovies);
   const [search, setSearch] = useState("");
-  console.log(search);
+  // console.log(search);
 
   useEffect(() => {
-    fetch(
-      `https://assignment-10-server-snowy-seven.vercel.app/allmovies?searchParams=${search}`
-    )
+    fetch(`http://localhost:5000/allmovies?searchParams=${search}`)
       .then((res) => res.json())
       .then((data) => setMovies(data));
   }, [search]);
 
   return (
     <div>
-      <div className="container mx-auto p-5 py-5">
+      <div className="container mx-auto mt-14 p-5 py-5">
         <div
-          className="  rounded-xl object-cover 
+          className=" max-h-96 rounded-xl object-cover 
             mix-blend-luminosity flex items-center justify-center h-screen bg-cover bg-no-repeat bg-center bg-[url(https://i.ytimg.com/vi/iAPSvgjCkuQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDiTYqYgF2jWNMm4yghmeI1QAdn6Q)]"
         >
           <h1
@@ -37,7 +35,7 @@ const AllMovies = () => {
 
         <div className="flex justify-between items-center">
           {" "}
-          <h1 className="text-3xl font-bold my-10 text-center">
+          <h1 className=" text-xl md:text-3xl font-bold my-10 text-center">
             All Movies : {movies.length}
           </h1>
           <div>
@@ -64,7 +62,7 @@ const AllMovies = () => {
             </label>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4  gap-5">
           {movies.map((movie, index) => (
             <div
               data-aos="fade-up"

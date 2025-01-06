@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useLoaderData} from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
-
 
 const UpdateMovie = () => {
   const movie = useLoaderData();
@@ -34,7 +33,7 @@ const UpdateMovie = () => {
   };
 
   const onSubmit = (data) => {
-    fetch(`https://assignment-10-server-snowy-seven.vercel.app/ allMovies/${_id}`, {
+    fetch(`http://localhost:5000/ allMovies/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -59,10 +58,7 @@ const UpdateMovie = () => {
 
   return (
     <div className="dark:bg-slate-800 bg-white dark:text-white">
-      <div
-      
-        className="hero py-10  min-h-screen"
-      >
+      <div className="hero py-10  min-h-screen">
         <div className="card  w-full max-w-3xl shrink-0 bg-white shadow-2xl">
           <h1 className="text-center font-bold text-3xl pt-5">Updated Movie</h1>
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
@@ -130,7 +126,6 @@ const UpdateMovie = () => {
                   <option value="Drama">Drama</option>
                   <option value="Horror">Horror</option>
                   <option value="Action">Action</option>
-                 
                 </select>
                 {errors.genre?.type === "required" && (
                   <p className="text-sm text-red-700 mt-5">
@@ -181,13 +176,12 @@ const UpdateMovie = () => {
                   <option value="" disabled>
                     Select Release Year
                   </option>
-                 
+
                   <option value="2024">2024</option>
                   <option value="2023">2023</option>
                   <option value="2022">2022</option>
                   <option value="2021">2021</option>
                   <option value="2020">2020</option>
-                  
                 </select>
                 {errors.year?.type === "required" && (
                   <p className="text-sm text-red-700 mt-2">
@@ -250,7 +244,6 @@ const UpdateMovie = () => {
           </form>
         </div>
       </div>
-      
     </div>
   );
 };
