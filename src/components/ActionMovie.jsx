@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 const ActionMovie = () => {
   return (
     <div className=" dark:bg-[#434342] dark:text-white">
-      <div className="container mx-auto p-5 my-5">
+      <div className="container mx-auto p-5">
         <h1 className="  text-center text-3xl md:text-4xl my-10">TOP ACTION MOVIES IN THEATRES</h1>
         {/* img */}
         <Marquee pauseOnHover> 
@@ -20,7 +20,6 @@ const ActionMovie = () => {
             <div className="card-body">
               <h2 className="card-title text-black">ACTION</h2>
              <p> Drama , Action</p>
-              <button className=" btn bg-white border-none text-black hover:text-white  hover:bg-gray-600 ">Show Movie</button>
               
             </div>
           </div>
@@ -35,7 +34,6 @@ const ActionMovie = () => {
             <div className="card-body">
               <h2 className="card-title text-black">POWER </h2>
              <p> Drama , Action</p>
-              <button className=" btn bg-white border-none text-black hover:text-white  hover:bg-gray-600 ">Show Movie</button>
               
             </div>
           </div>   {/* card3 */}
@@ -49,7 +47,6 @@ const ActionMovie = () => {
             <div className="card-body">
               <h2 className="card-title text-black">THE DREAM IS REAL</h2>
              <p> Drama , Action</p>
-              <button className=" btn bg-white border-none text-black hover:text-white  hover:bg-gray-600 ">Show Movie</button>
               
             </div>
           </div>   {/* card4 */}
@@ -63,7 +60,6 @@ const ActionMovie = () => {
             <div className="card-body">
               <h2 className="card-title text-black">DISHOOM</h2>
              <p> Drama , Action</p>
-              <button className=" btn bg-white border-none text-black hover:text-white  hover:bg-gray-600 ">Show Movie</button>
               
             </div>
           </div>     {/* card7 */}
@@ -77,7 +73,6 @@ const ActionMovie = () => {
             <div className="card-body">
               <h2 className="card-title text-black">X-MAN</h2>
              <p> Drama , Action</p>
-              <button className=" btn bg-white border-none text-black hover:text-white  hover:bg-gray-600 ">Show Movie</button>
               
             </div>
           </div>    {/* card9 */}
@@ -91,7 +86,6 @@ const ActionMovie = () => {
             <div className="card-body">
               <h2 className="card-title text-black">MORBIUS</h2>
              <p> Drama , Action</p>
-              <button className=" btn bg-white border-none text-black hover:text-white  hover:bg-gray-600 ">Show Movie</button>
               
             </div>
           </div>   {/* card10 */}
@@ -105,7 +99,6 @@ const ActionMovie = () => {
             <div className="card-body">
               <h2 className="card-title text-black">BAAGHI 2</h2>
              <p> Drama , Action</p>
-              <button className=" btn bg-white border-none text-black hover:text-white  hover:bg-gray-600 ">Show Movie</button>
               
             </div>
           </div>  

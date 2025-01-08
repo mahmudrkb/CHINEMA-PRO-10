@@ -96,13 +96,16 @@ const AddMovies = () => {
 
     // server side connect
 
-    fetch("http://localhost:5000/addMovies", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newMovie),
-    })
+    fetch(
+      "https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/addMovies",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newMovie),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

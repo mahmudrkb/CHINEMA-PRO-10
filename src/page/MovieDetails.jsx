@@ -32,9 +32,12 @@ const MovieDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allmovies/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/allmovies/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             Swal.fire({
@@ -50,13 +53,16 @@ const MovieDetails = () => {
   };
 
   const handleAddFavorite = () => {
-    fetch(`http://localhost:5000/favorites`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(movies),
-    })
+    fetch(
+      `https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/favorites`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(movies),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

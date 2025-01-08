@@ -33,13 +33,16 @@ const UpdateMovie = () => {
   };
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/ allMovies/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/ allMovies/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
 
       .then((data) => {

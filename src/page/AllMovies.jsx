@@ -12,7 +12,9 @@ const AllMovies = () => {
   // console.log(search);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allmovies?searchParams=${search}`)
+    fetch(
+      `https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/allmovies?searchParams=${search}`
+    )
       .then((res) => res.json())
       .then((data) => setMovies(data));
   }, [search]);

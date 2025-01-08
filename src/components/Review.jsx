@@ -14,11 +14,11 @@ import "@smastrom/react-rating/style.css";
 const Review = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
-    fetch('/public/reviews.json')
+    fetch('/reviews.json')
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);
-  console.log(review)
+//   console.log(review)
   return (
     <div className="bg-slate-100">
         <div className="my-5 container mx-auto p-5 ">

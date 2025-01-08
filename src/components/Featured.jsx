@@ -10,7 +10,9 @@ const Featured = () => {
   const [movies, useMovies] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allmovies")
+    fetch(
+      "https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/allmovies"
+    )
       .then((res) => res.json())
       .then((data) => useMovies(data));
   }, []);

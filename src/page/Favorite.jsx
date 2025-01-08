@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Favorite = () => {
   const loadMovies = useLoaderData();
-const [movies,setMovies]=useState(loadMovies)
+  const [movies, setMovies] = useState(loadMovies);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -16,12 +16,14 @@ const [movies,setMovies]=useState(loadMovies)
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    })
-    .then((result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/favorites/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/favorites/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             Swal.fire({
@@ -31,14 +33,12 @@ const [movies,setMovies]=useState(loadMovies)
             });
             const updatedMovies = movies.filter((movie) => movie._id !== id);
             setMovies(updatedMovies);
-            
           });
-         
       }
     });
   };
   return (
-    <div className="mt-16 h-screen">
+    <div className="mt-16 container mx-auto p-5 h-screen">
       <div>
         <div className="text-3xl font-bold my-10 text-center">
           Favorite Movies : {movies.length}
@@ -47,7 +47,7 @@ const [movies,setMovies]=useState(loadMovies)
           <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
-              <thead>
+              <thead className="bg-slate-100">
                 <tr>
                   <th>No</th>
                   <th>Name</th>
@@ -80,12 +80,13 @@ const [movies,setMovies]=useState(loadMovies)
                     <td>{movie.email}</td>
                     <td>
                       {" "}
-                      <button className="text-red-600"
+                      <button
+                        className="text-red-600"
                         onClick={() => {
                           handleDelete(movie._id);
                         }}
                       >
-                       <MdOutlineDelete />
+                        <MdOutlineDelete />
                       </button>
                     </td>
                   </tr>

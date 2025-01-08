@@ -28,7 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Featured></Featured>,
-        loader: () => fetch("http://localhost:5000/allmovies"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/allmovies"
+          ),
       },
 
       {
@@ -43,7 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/allMovies",
         element: <AllMovies></AllMovies>,
-        loader: () => fetch("http://localhost:5000/allmovies"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/allMovies"
+          ),
       },
 
       {
@@ -54,7 +60,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allmovies/${params.id}`),
+          fetch(
+            `https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/allmovies/${params.id}`
+          ),
       },
       {
         path: "/update",
@@ -68,8 +76,10 @@ const router = createBrowserRouter([
             <Favorite></Favorite>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/favorites"),
-       
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-m3ps2masc-al-mahmud-rakibs-projects.vercel.app/favorites"
+          ),
       },
       {
         path: "/pages",
