@@ -31,18 +31,7 @@
  <p>Welcome to Chinema Pro, your ultimate destination for exploring, discovering, and enjoying movies! This platform is designed for movie enthusiasts to browse a vast collection of films, check details like ratings, reviews, and trailers, and create personalized watchlists. Whether you're looking for the latest blockbusters or timeless classics, this website has something for everyone.</p>
  </div>
 
-   <div>
-    <h2 className="font-semibold"> Feature</h2>
-    <ul>
-      <li>User Authentication</li>
-      <li> jwt  secure</li>
-      <li> Add Movies</li>
-      <li> Responsive Design and smooth User Experience</li>
-      <li> Manage Movies </li>
-      <li> My favorite list </li>
-      <li> Dark Mode </li>
-    </ul>
-</div>
+ 
 
 <div> 
 <h2>Technologies Used 💻</h2>
